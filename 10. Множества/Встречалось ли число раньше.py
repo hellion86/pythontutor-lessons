@@ -1,13 +1,28 @@
-﻿'''
+'''
 Условие
-Даны два списка чисел. Найдите все числа, которые входят как в первый, так и во второй список и выведите их в порядке возрастания.
-
-Примечание. И даже эту задачу на Питоне можно решить в одну строчку.
+Во входной строке записана последовательность чисел через пробел. 
+Для каждого числа выведите слово YES (в отдельной строке), если это число ранее встречалось в последовательности или NO, если не встречалось.
 '''
 
 #Мое решение
-for i in sorted((set(input().split()) & set(input().split())), key=int): print(i,end = ' ')
+m=[int(a) for a in input().split()]
+s = set()
+
+for i in  m:
+    if s & {i}:
+        print('YES')
+    else:
+        print('NO')
+        s.add(i)
+
 
 	
 #Правильное решение
-print(*sorted(set(input().split()) & set(input().split()), key=int))
+numbers = [int(s) for s in input().split()]
+occur_before = set()
+for num in numbers:
+    if num in occur_before:
+        print('YES')
+    else:
+        print('NO')
+        occur_before.add(num)
